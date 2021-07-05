@@ -1,15 +1,25 @@
 // import Link from "next/link";
-// import Layout from "../components/Layout";
+import Layout from "components/layout";
 import { Login, Logout, auth } from "lib/firebase";
 import { FC } from "react";
+import Image from "next/image";
 
 const IndexPage: FC = () => (
-  <>
-    <h1>Hello Next.js 👋</h1>
+  <Layout title="index">
+    <h1>INIAD-MATCH 👋</h1>
     <div>
       {auth.currentUser && (
         <div>
-          <h2>{auth.currentUser.displayName}さん こんにちは！</h2>
+          <Image
+            src={auth.currentUser.photoURL}
+            quality={100}
+            width={200}
+            height={200}
+            alt="profile img"
+          />
+          <h2 className="text-6xl">
+            {auth.currentUser.displayName}さん こんにちは！
+          </h2>
           <button onClick={() => Logout()}>ログアウト</button>
         </div>
       )}
@@ -20,7 +30,7 @@ const IndexPage: FC = () => (
         </div>
       )}
     </div>
-  </>
+  </Layout>
 );
 
 export default IndexPage;
