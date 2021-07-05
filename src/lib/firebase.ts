@@ -18,9 +18,12 @@ export const Firebase = firebase;
 
 export const Login = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
+  provider.setCustomParameters({
+    hd: "iniad.org",
+  });
   firebase
     .auth()
-    .signInWithPopup(provider)
+    .signInWithRedirect(provider)
     .then(function (result: any) {
       return result;
     })
