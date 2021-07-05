@@ -20,13 +20,23 @@ const IndexPage: FC = () => (
           <h2 className="text-6xl">
             {auth.currentUser.displayName}さん こんにちは！
           </h2>
-          <button onClick={() => Logout()}>ログアウト</button>
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            onClick={() => Logout()}
+          >
+            ログアウト
+          </button>
         </div>
       )}
       {!auth.currentUser && (
         <div>
           <h2>INIADアカウントでログインしてください</h2>
-          <button onClick={() => Login()}>ログイン</button>
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            onClick={() => Login()}
+          >
+            ログイン
+          </button>
         </div>
       )}
     </div>
