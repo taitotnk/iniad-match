@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/auth"; // If you need it
 
+//config firebase
 export const config = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -15,7 +16,9 @@ export const config = {
 
 export const auth = firebase.auth();
 export const Firebase = firebase;
+export const db = firebase.firestore();
 
+//Login func
 export const Login = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   provider.setCustomParameters({
@@ -36,7 +39,7 @@ export const Login = () => {
     });
 };
 
-// ログイン状態の検知
+// detect login state
 export const listenAuthState = (dispatch: any) => {
   return firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
@@ -61,7 +64,7 @@ export const firebaseUser = () => {
   return firebase.auth().currentUser;
 };
 
-// Logout
+// Logout func
 export const Logout = () => {
   auth.signOut().then(() => {
     window.location.reload();
