@@ -1,24 +1,15 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useEffect } from "react";
 import "tailwindcss/tailwind.css";
-import { AppProps } from "next/app";
-import AuthContext from "lib/AuthContext";
-import authReducer from "lib/authReducer";
-import { listenAuthState } from "lib/firebase";
 import "styles/globals.css";
+import { AppProps } from "next/app";
+import { AuthProvider } from "context/Auth";
 
-function MyApp({ Component, pageProps }: AppProps) {
-  const [state, dispatch] = useReducer(
-    authReducer.reducer,
-    authReducer.initialState
-  );
-  useEffect(() => {
-    return listenAuthState(dispatch);
-  }, []);
+const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
-    <AuthContext.Provider value={state}>
+    <AuthProvider>
       <Component {...pageProps} />
-    </AuthContext.Provider>
+    </AuthProvider>
   );
-}
+};
 
 export default MyApp;
