@@ -11,7 +11,9 @@ const SignIn: FC = () => {
   }, [currentUser]);
 
   return (
-    <div className="container">
+    <div className="container mx-auto">
+      <h1>INIAD-MATCH👋</h1>
+      <h2>INIAD生のためのマッチングアプリ</h2>
       <button
         className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
         onClick={login}

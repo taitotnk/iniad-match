@@ -14,25 +14,30 @@ const Home: FC = () => {
 
   return (
     <Layout title="index">
-      <h1>INIAD-MATCH 👋</h1>
-      {currentUser && (
-        <div>
-          <h2>{currentUser?.displayName}</h2>
-          <Image
-            src={currentUser?.photoURL}
-            width={100}
-            height={100}
-            quality={90}
-            alt="profile_img"
-          />
-        </div>
-      )}
-      <button
-        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-        onClick={logout}
-      >
-        logout
-      </button>
+      <div className="container mx-auto">
+        <h1>INIAD-MATCH 👋</h1>
+        {currentUser && (
+          <div>
+            <div className="absolute top-0 right-0 h-20 w-20">
+              <Image
+                className="rounded-full h-24 w-24 flex items-center justify-center"
+                src={currentUser?.photoURL}
+                width={100}
+                height={100}
+                quality={90}
+                // layout={"responsive"}
+                alt="profile_img"
+              />
+            </div>
+          </div>
+        )}
+        <button
+          className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+          onClick={logout}
+        >
+          logout
+        </button>
+      </div>
     </Layout>
   );
 };
