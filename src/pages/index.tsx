@@ -1,46 +1,40 @@
-// import Link from "next/link";
 import Layout from "components/layout";
-import { Login, Logout, auth } from "lib/firebase";
-import { FC } from "react";
+import { FC, useEffect } from "react";
+import Router from "next/router";
+import { useAuth } from "context/useAuth";
+import logout from "lib/logout";
 import Image from "next/image";
+import { auth } from "utils/Firebase";
 
-const IndexPage: FC = () => (
-  <Layout title="index">
-    <h1>INIAD-MATCH 👋</h1>
-    <div>
-      {auth.currentUser && (
+const Home: FC = () => {
+  const { currentUser } = useAuth();
+  useEffect(() => {
+    !currentUser && Router.push("/signIn");
+  }, [currentUser]);
+
+  return (
+    <Layout title="index">
+      <h1>INIAD-MATCH 👋</h1>
+      {currentUser && (
         <div>
+          <h2>{currentUser?.displayName}</h2>
           <Image
-            src={auth.currentUser.photoURL}
-            quality={100}
-            width={200}
-            height={200}
-            alt="profile img"
+            src={currentUser?.photoURL}
+            width={100}
+            height={100}
+            quality={90}
+            alt="profile_img"
           />
-          <h2 className="text-6xl">
-            {auth.currentUser.displayName}さん こんにちは！
-          </h2>
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            onClick={() => Logout()}
-          >
-            ログアウト
-          </button>
         </div>
       )}
-      {!auth.currentUser && (
-        <div>
-          <h2>INIADアカウントでログインしてください</h2>
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            onClick={() => Login()}
-          >
-            ログイン
-          </button>
-        </div>
-      )}
-    </div>
-  </Layout>
-);
+      <button
+        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+        onClick={logout}
+      >
+        logout
+      </button>
+    </Layout>
+  );
+};
 
-export default IndexPage;
+export default Home;
