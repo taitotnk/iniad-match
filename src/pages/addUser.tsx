@@ -57,14 +57,14 @@ const AddUser: FC = () => {
           <h1>プロフィール設定</h1>
           <Image
             className="rounded-full h-24 w-24 flex items-center justify-center"
-            src={currentUser?.photoURL}
+            src={currentUser.photoURL}
             width={100}
             height={100}
             quality={90}
             // layout={"responsive"}
             alt="profile_img"
           />
-          <h2>{currentUser?.displayName}</h2>
+          <h2>{currentUser.displayName}</h2>
           <form onSubmit={onSubmit}>
             <label>好きなこと：</label>
             <select {...register("favorite", { required: true })}>
@@ -82,7 +82,7 @@ const AddUser: FC = () => {
                 {...register("twitterId", {
                   required: true,
                   maxLength: 15,
-                  pattern: /^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i,
+                  pattern: /^[a-zA-Z0-9_\-.]{3,15}$/i,
                 })}
               />
               <br />
@@ -97,7 +97,7 @@ const AddUser: FC = () => {
                 placeholder="taito_1211"
                 {...register("instagramId", {
                   max: 15,
-                  pattern: /^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i,
+                  pattern: /^[a-zA-Z0-9_\-.]{3,15}$/i,
                 })}
               />
               <br />
@@ -115,7 +115,7 @@ const AddUser: FC = () => {
                 placeholder="taito_1211"
                 {...register("lineId", {
                   maxLength: 15,
-                  pattern: /^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i,
+                  pattern: /^[a-zA-Z0-9_\-.]{3,15}$/i,
                 })}
               />
               <br />
