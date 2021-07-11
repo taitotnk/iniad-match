@@ -1,14 +1,11 @@
 import Layout from "components/layout";
-import { FC, useEffect, useContext } from "react";
+import { FC, useEffect } from "react";
 import Router from "next/router";
 import { useAuth } from "context/useAuth";
 import logout from "lib/logout";
 import Image from "next/image";
 import { auth, db } from "utils/Firebase";
-import isAddedUser from "lib/isAddedUser";
-import getMatchData from "lib/getMatchData";
 import { GetServerSideProps } from "next";
-import { AuthContext } from "context/Auth";
 
 type UserData = {
   name: string;
@@ -25,7 +22,7 @@ type UserDataProps = {
   userData: UserData;
 };
 
-const Home = ({ userData }: UserDataProps) => {
+const Home: FC = ({ userData }: UserDataProps) => {
   const { currentUser } = useAuth();
   if (currentUser) {
     let isAddedUser: boolean;
@@ -55,7 +52,7 @@ const Home = ({ userData }: UserDataProps) => {
   return (
     <Layout title="index">
       <div className="container mx-auto">
-        <h1>INIAD-MATCH 👋</h1>
+        <h1 className="text-white">INIAD-MATCH 👋</h1>
         {currentUser && (
           <div>
             <div className="absolute top-0 right-0 h-20 w-20">
@@ -80,7 +77,7 @@ const Home = ({ userData }: UserDataProps) => {
 
         {userData.map((data) => (
           <>
-            <div className="bg-white rounded px-4 py-4 flex flex-col justify-between leading-normal shadow">
+            <div className="my-8 bg-white rounded px-4 py-4 flex flex-col justify-between leading-normal shadow">
               <div className="flex mt-3">
                 <Image
                   src={data.photoURL}
@@ -98,16 +95,22 @@ const Home = ({ userData }: UserDataProps) => {
               </div>
               <div>
                 <div className="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
+                  <h2>Like💖 {data.favorite}</h2>
+                </div>
+                <div className="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
                   {data.description}
                 </div>
                 <a href={`https://twitter.com/${data.twitterId}`}>
-                  <button>Twitter</button>
+                  <button className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                    Twitter
+                  </button>
                 </a>
-                <div>
-                  <a href={`https://www.instagram.com/${data.instagramId}`}>
-                    <button>Instagram</button>
-                  </a>
-                </div>
+
+                <a href={`https://www.instagram.com/${data.instagramId}`}>
+                  <button className="py-2 px-4 rounded-full text-white font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-200 hover:from-pink-500 hover:to-orange-500">
+                    Instagram
+                  </button>
+                </a>
               </div>
             </div>
           </>

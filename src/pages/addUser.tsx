@@ -37,7 +37,7 @@ const AddUser: FC = () => {
           email: currentUser?.email,
           name: currentUser?.displayName,
           photoURL: currentUser?.photoURL,
-          favolite: data.favorite,
+          favorite: data.favorite,
           twitterId: data.twitterId,
           instagramId: data.instagramId,
           lineId: data.lineId,
@@ -55,7 +55,7 @@ const AddUser: FC = () => {
     <div className="container mx-auto">
       {currentUser && (
         <div>
-          <h1>プロフィール設定</h1>
+          <h1 className="text-white">プロフィール設定</h1>
           <Image
             className="rounded-full h-24 w-24 flex items-center justify-center"
             src={currentUser.photoURL}
@@ -65,21 +65,21 @@ const AddUser: FC = () => {
             // layout={"responsive"}
             alt="profile_img"
           />
-          <h2>{currentUser.displayName}</h2>
+          <h2 className="text-white">{currentUser.displayName}</h2>
           <form onSubmit={onSubmit}>
             <label>好きなこと：</label>
             <select {...register("favorite", { required: true })}>
               <option value="" disabled selected>
                 選択してください
               </option>
-              <option value="programing">プログラミング</option>
-              <option value="soccer">サッカー</option>
+              <option value="Programing">プログラミング</option>
+              <option value="Soccer">サッカー</option>
             </select>
             <div>
               <label>Twitter ID：</label>
               <input
                 type="text"
-                placeholder="taito_1211"
+                placeholder="test_0000"
                 {...register("twitterId", {
                   required: true,
                   maxLength: 15,
@@ -95,7 +95,7 @@ const AddUser: FC = () => {
               <label>Instagram ID：</label>
               <input
                 type="text"
-                placeholder="taito_1211"
+                placeholder="test-test"
                 {...register("instagramId", {
                   max: 15,
                   pattern: /^[a-zA-Z0-9_\-.]{3,15}$/i,
@@ -109,24 +109,6 @@ const AddUser: FC = () => {
                 </span>
               )}
             </div>
-            {/* <div>
-              <label>LINE ID：</label>
-              <input
-                type="text"
-                placeholder="taito_1211"
-                {...register("lineId", {
-                  maxLength: 15,
-                  pattern: /^[a-zA-Z0-9_\-.]{3,15}$/i,
-                })}
-              />
-              <br />
-              {errors.lineId && (
-                <span>
-                  ※LINE
-                  IDは15文字以内です。無効な文字が入力されている可能性があります。
-                </span>
-              )}
-            </div> */}
             <div>
               <label>自己紹介：</label>
               <input

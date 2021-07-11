@@ -9,6 +9,10 @@
     h2 {
       @apply mb-4 text-xl sm:text-2xl font-bold;
     }
+
+    html{
+      @apply bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-300;
+    }
    }
 
 
