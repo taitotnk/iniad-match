@@ -36,6 +36,7 @@ const AddUser: FC = () => {
         .add({
           email: currentUser?.email,
           name: currentUser?.displayName,
+          photoURL: currentUser?.photoURL,
           favolite: data.favorite,
           twitterId: data.twitterId,
           instagramId: data.instagramId,
@@ -108,7 +109,7 @@ const AddUser: FC = () => {
                 </span>
               )}
             </div>
-            <div>
+            {/* <div>
               <label>LINE ID：</label>
               <input
                 type="text"
@@ -125,13 +126,13 @@ const AddUser: FC = () => {
                   IDは15文字以内です。無効な文字が入力されている可能性があります。
                 </span>
               )}
-            </div>
+            </div> */}
             <div>
               <label>自己紹介：</label>
               <input
                 type="text"
                 placeholder="よろしくおねがいします！"
-                {...register("description", { maxLength: 50 })}
+                {...register("description", { maxLength: 20 })}
               />
             </div>
             <input
