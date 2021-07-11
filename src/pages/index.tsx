@@ -6,34 +6,10 @@ import logout from "lib/logout";
 import Image from "next/image";
 import { auth, db } from "utils/Firebase";
 import isAddedUser from "lib/isAddedUser";
+import getMatchData from "lib/getMatchData";
 
 const Home: FC = () => {
   const { currentUser } = useAuth();
-
-  //非登録=>addUserリンクへ
-  if (currentUser) {
-    let isAddedUser: boolean;
-    db.collection("users")
-      .where("email", "==", currentUser.email)
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          doc.data() && (isAddedUser = true);
-        });
-        if (isAddedUser) {
-          console.log("ok");
-        } else {
-          Router.push("/addUser");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  useEffect(() => {
-    !currentUser && Router.push("/signIn");
-  }, [currentUser]);
 
   return (
     <Layout title="index">
