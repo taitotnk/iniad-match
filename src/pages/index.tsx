@@ -24,7 +24,7 @@ type UserDataProps = {
   userData: UserData;
 };
 
-const Home: FC = ({ userData }: UserDataProps) => {
+const Home = ({ userData }: UserDataProps) => {
   const { currentUser } = useAuth();
   if (currentUser) {
     let isAddedUser: boolean;

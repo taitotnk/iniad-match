@@ -56,15 +56,17 @@ const AddUser: FC = () => {
       {currentUser && (
         <div>
           <h1 className="text-white">プロフィール設定</h1>
-          <Image
-            className="rounded-full h-24 w-24 flex items-center justify-center"
-            src={currentUser.photoURL}
-            width={100}
-            height={100}
-            quality={90}
-            // layout={"responsive"}
-            alt="profile_img"
-          />
+          {currentUser.photoURL !== null && (
+            <Image
+              className="rounded-full h-24 w-24 flex items-center justify-center"
+              src={currentUser.photoURL}
+              width={100}
+              height={100}
+              quality={90}
+              // layout={"responsive"}
+              alt="profile_img"
+            />
+          )}
           <h2 className="text-white">{currentUser.displayName}</h2>
 
           <div className="mt-8">
