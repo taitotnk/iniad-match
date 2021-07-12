@@ -134,7 +134,7 @@ const Home: FC = ({ userData }: UserDataProps) => {
                   <div className="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
                     <h2>Like💖 {data.favorite}</h2>
                   </div>
-                  <div className="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
+                  <div className="mt-3 md:mt-0 text-gray-700 text-2xl mb-2">
                     {data.description}
                   </div>
                   <a href={`https://twitter.com/${data.twitterId}`}>
