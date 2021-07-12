@@ -1,10 +1,10 @@
 import Layout from "components/layout";
-import { FC, useEffect } from "react";
+import { useEffect } from "react";
 import Router from "next/router";
 import { useAuth } from "context/useAuth";
 import logout from "lib/logout";
 import Image from "next/image";
-import { auth, db } from "utils/Firebase";
+import { db } from "utils/Firebase";
 import { GetServerSideProps } from "next";
 import { elastic as Menu } from "react-burger-menu";
 import Link from "next/link";

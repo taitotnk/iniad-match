@@ -2,7 +2,6 @@ import { FC, useEffect } from "react";
 import Router from "next/router";
 import { useAuth } from "context/useAuth";
 import login from "lib/login";
-import Image from "next/image";
 
 const SignIn: FC = () => {
   const { currentUser } = useAuth();
