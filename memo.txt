@@ -19,3 +19,9 @@ https://qiita.com/zaburo/items/353524e4f54671c8eace
 
 【Firebase】Cloud Firestore クエリ まとめ
 https://zenn.dev/tentel/articles/ea7d5c03e68e6d142d98
+
+signin card 
+https://tailwindcomponents.com/component/card-7
+
+addUser design
+https://qiita.com/toitoi8821/items/40c8257eca49407f549e
