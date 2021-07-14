@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { FC, ReactNode } from "react";
+import { ReactNode } from "react";
 
 type Props = {
   children: ReactNode;
