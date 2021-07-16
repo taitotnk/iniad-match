@@ -16,7 +16,7 @@ export const config = {
 
 export const auth = firebase.auth();
 export const Firebase = firebase;
-export const db = firebase.firestore();
+// export const db = firebase.firestore();
 
 //Login func
 export const Login = () => {
