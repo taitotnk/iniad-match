@@ -74,29 +74,29 @@ const Home = ({ userData }: UserDataProps) => {
                     Twitter
                   </button>
                 </a>
-
                 {data.instagramId !== "" && (
-                  <a
-                    href={`https://www.instagram.com/${data.instagramId}`}
-                  >
-                    <button className="py-2 px-4 rounded-full text-white font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-200 hover:from-pink-500 hover:to-orange-500">
-                      Instagram
-                    </button>
-                  </a>
+                  <div>
+                    <a
+                      href={`https://www.instagram.com/${data.instagramId}`}
+                    >
+                      <button className="py-2 px-4 rounded-full text-white font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-200 hover:from-pink-500 hover:to-orange-500">
+                        Instagram
+                      </button>
+                    </a>
+                  </div>
                 )}
-
               </div>
             )}
           </>
         ))}
-        <div>
-          <button
-            className="my-6 bg-red-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded-full"
-            onClick={logout}
-          >
-            logout
-          </button>
-        </div>
+
+        <button
+          className="my-6 bg-red-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded-full"
+          onClick={logout}
+        >
+          logout
+        </button>
+
       </Menu>
 
       <div className="container mx-auto">
