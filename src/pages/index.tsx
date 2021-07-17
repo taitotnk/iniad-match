@@ -53,7 +53,7 @@ const Home = ({ userData }: UserDataProps) => {
 
   return (
     <Layout title="index">
-      <Menu width={250}>
+      <Menu width={240}>
         <div className="side_img">
           <div>
             {userData.map((data) => (
@@ -107,7 +107,7 @@ const Home = ({ userData }: UserDataProps) => {
       <div className="container mx-auto">
         <Link href="/">
           <a>
-            <h1 className="text-white">INIAD-MATCH 👋</h1>
+            <h1 className="text-white pl-10">INIAD-MATCH 👋</h1>
           </a>
         </Link>
 
