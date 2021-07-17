@@ -54,53 +54,48 @@ const Home = ({ userData }: UserDataProps) => {
   return (
     <Layout title="index">
       <Menu width={240}>
-        <div className="side_img">
-          <div>
-            {userData.map((data) => (
-              <>
-                {data.email == currentUser?.email && (
-                  <div>
-                    <Image
-                      className="inline-block rounded-full h-24 w-24 flex items-center justify-center"
-                      src={data.photoURL}
-                      width={200}
-                      height={200}
-                      quality={90}
-                      alt="profile_img"
-                    />
-                    <h2>{data.name}</h2>
-                    <h3>{data.favorite}</h3>
-                    <div>
-                      <a href={`https://twitter.com/${data.twitterId}`}>
-                        <button className="my-6 bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                          Twitter
-                        </button>
-                      </a>
-                    </div>
-                    <div>
-                      {data.instagramId !== "" && (
-                        <a
-                          href={`https://www.instagram.com/${data.instagramId}`}
-                        >
-                          <button className="py-2 px-4 rounded-full text-white font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-200 hover:from-pink-500 hover:to-orange-500">
-                            Instagram
-                          </button>
-                        </a>
-                      )}
-                    </div>
-                  </div>
+
+        {userData.map((data) => (
+          <>
+            {data.email == currentUser?.email && (
+              <div>
+                <Image
+                  className="inline-block rounded-full h-24 w-24 flex items-center justify-center"
+                  src={data.photoURL}
+                  width={200}
+                  height={200}
+                  quality={90}
+                  alt="profile_img"
+                />
+                <h2>{data.name}</h2>
+                <h3>{data.favorite}</h3>
+                <a href={`https://twitter.com/${data.twitterId}`}>
+                  <button className="my-6 bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                    Twitter
+                  </button>
+                </a>
+
+                {data.instagramId !== "" && (
+                  <a
+                    href={`https://www.instagram.com/${data.instagramId}`}
+                  >
+                    <button className="py-2 px-4 rounded-full text-white font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-200 hover:from-pink-500 hover:to-orange-500">
+                      Instagram
+                    </button>
+                  </a>
                 )}
-              </>
-            ))}
-            <div>
-              <button
-                className="my-6 bg-red-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded-full"
-                onClick={logout}
-              >
-                logout
-              </button>
-            </div>
-          </div>
+
+              </div>
+            )}
+          </>
+        ))}
+        <div>
+          <button
+            className="my-6 bg-red-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded-full"
+            onClick={logout}
+          >
+            logout
+          </button>
         </div>
       </Menu>
 
