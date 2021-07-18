@@ -64,6 +64,7 @@ const Home = ({ userData }: UserDataProps) => {
                   src={data.photoURL}
                   width={200}
                   height={200}
+
                   quality={90}
                   alt="profile_img"
                 />
