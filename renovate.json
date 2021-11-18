@@ -1,5 +1,13 @@
 {
-  "extends": [
-    "config:base"
-  ]
+  "extends": ["config:base"],
+  "timezone": "Asia/Tokyo",
+  "labels": ["renovate"],
+  "schedule": ["every weekend"],
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "reviewers": ["Taito-Code"],
+  "vulnerabilityAlerts": {
+    "labels": ["security"]
+  }
 }
