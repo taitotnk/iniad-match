@@ -2,7 +2,7 @@
   "extends": ["config:base"],
   "timezone": "Asia/Tokyo",
   "labels": ["renovate"],
-  "schedule": ["every weekend"],
+  "schedule": "after 10am on the first day of the month",
   "lockFileMaintenance": {
     "enabled": true
   },
