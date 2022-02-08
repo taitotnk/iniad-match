@@ -6,6 +6,7 @@ import Router from "next/router";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { getMyInfo } from "lib/getMyInfo";
+import { useEffect, useState } from "react";
 
 type FormState = {
   favorite: string;
@@ -24,23 +25,25 @@ const profileUpdate = () => {
   const { currentUser } = useAuth();
 
   // 現在のプロフィール情報を取得
-  let myInfo: MyInfo[] = [];
-  const userDataRaw = getMyInfo(currentUser?.email);
-  userDataRaw.then((result) => {
-    if (result) {
-      const MyInfoRaw = {
-        favorite: result[0]?.favorite,
-        twitterId: result[0]?.twitterId,
-        instagramId: result[0]?.instagramId,
-        description: result[0]?.description,
-        email: result[0]?.email,
-        photoURL: result[0]?.photoURL,
-        name: result[0]?.name,
-      };
-      // const returnedMyInfo = Object.assign(MyInfo, MyInfoRaw);
-      myInfo.push(MyInfoRaw);
-    }
-  });
+  const [myInfo, setMyInfo] = useState<MyInfo>();
+  useEffect(() => {
+    const userDataRaw = getMyInfo(currentUser?.email);
+    userDataRaw.then((result) => {
+      if (result) {
+        const MyInfoRaw = {
+          favorite: result[0]?.favorite,
+          twitterId: result[0]?.twitterId,
+          instagramId: result[0]?.instagramId,
+          description: result[0]?.description,
+          email: result[0]?.email,
+          photoURL: result[0]?.photoURL,
+          name: result[0]?.name,
+        };
+        setMyInfo(MyInfoRaw);
+      }
+    });
+  }, []);
+
   console.log(myInfo);
   const {
     register,
@@ -86,7 +89,7 @@ const profileUpdate = () => {
       {currentUser && (
         <div>
           <h1 className="text-white">プロフィール設定</h1>
-          <div>{myInfo[0]?.description}</div>
+          <div>{myInfo?.description}</div>
           {currentUser.photoURL !== null && (
             <Image
               className="rounded-full h-24 w-24 flex items-center justify-center"
