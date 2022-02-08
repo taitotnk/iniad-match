@@ -8,15 +8,15 @@ import { db } from "utils/Firebase";
 import { GetServerSideProps } from "next";
 import { elastic as Menu } from "react-burger-menu";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
-type UserData = {
+export type UserData = {
   name: string;
   email: string;
   photoURL: string;
   favorite: string;
   twitterId: string;
   instagramId: string;
-  // lineId: string;
   description: string;
 }[];
 
@@ -26,6 +26,15 @@ type UserDataProps = {
 
 const Home = ({ userData }: UserDataProps) => {
   const { currentUser } = useAuth();
+  const router = useRouter();
+  // const clickUpdateLink = () => {
+  //   router.push({
+  //     pathname: "/profileUpdate",
+  //     query: { email: currentUser?.email },
+  //   });
+  // };
+
+  //登録していないユーザーは登録ページに遷移
   if (currentUser) {
     let isAddedUser: boolean;
     db.collection("users")
@@ -54,17 +63,15 @@ const Home = ({ userData }: UserDataProps) => {
   return (
     <Layout title="index">
       <Menu width={240}>
-
         {userData.map((data) => (
           <>
-            {data.email == currentUser?.email && (
+            {data.email === currentUser?.email && (
               <div>
                 <Image
                   className="inline-block rounded-full h-24 w-24 flex items-center justify-center"
                   src={data.photoURL}
                   width={200}
                   height={200}
-
                   quality={90}
                   alt="profile_img"
                 />
@@ -77,9 +84,7 @@ const Home = ({ userData }: UserDataProps) => {
                 </a>
                 {data.instagramId !== "" && (
                   <div>
-                    <a
-                      href={`https://www.instagram.com/${data.instagramId}`}
-                    >
+                    <a href={`https://www.instagram.com/${data.instagramId}`}>
                       <button className="py-2 px-4 rounded-full text-white font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-200 hover:from-pink-500 hover:to-orange-500">
                         Instagram
                       </button>
@@ -97,7 +102,9 @@ const Home = ({ userData }: UserDataProps) => {
         >
           logout
         </button>
-
+        <Link href="/profileUpdate">
+          <a>UpdateProfile</a>
+        </Link>
       </Menu>
 
       <div className="container mx-auto">
@@ -166,7 +173,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       favorite: doc.data().favorite,
       twitterId: doc.data().twitterId,
       instagramId: doc.data().instagramId,
-      // lineId: doc.data().lineId,
       description: doc.data().description,
     };
     userData.push(data);
