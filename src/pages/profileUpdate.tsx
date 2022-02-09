@@ -88,7 +88,6 @@ const profileUpdate = () => {
       {currentUser && (
         <div>
           <h1 className="text-white">プロフィールの編集</h1>
-          <div>{myInfo?.description}</div>
           {currentUser.photoURL !== null && (
             <Image
               className="rounded-full h-24 w-24 flex items-center justify-center"
