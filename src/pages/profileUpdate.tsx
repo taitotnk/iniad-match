@@ -69,15 +69,16 @@ const profileUpdate = () => {
       description: data.description,
     };
 
-    if (window.confirm("登録しますか？"))
+    if (window.confirm("更新しますか？"))
       if (currentUser?.email) {
         db.collection("users")
           .doc(currentUser?.email)
-          .set(userData)
+          .update(userData)
           .then(() => {
             Router.push("/");
           })
-          .catch(() => {
+          .catch((error) => {
+            console.log(error);
             alert("登録に失敗しました");
           });
       }
@@ -214,6 +215,7 @@ const profileUpdate = () => {
               </div>
               <input
                 type="submit"
+                value="更新"
                 className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
               />
             </form>
