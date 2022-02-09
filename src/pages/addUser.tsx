@@ -31,24 +31,29 @@ const AddUser: FC = () => {
   });
 
   const onSubmit = handleSubmit((data) => {
+    const userData = {
+      email: currentUser?.email,
+      name: currentUser?.displayName,
+      photoURL: currentUser?.photoURL,
+      favorite: data.favorite,
+      twitterId: data.twitterId,
+      instagramId: data.instagramId,
+      lineId: data.lineId,
+      description: data.description,
+    };
+
     if (window.confirm("登録しますか？"))
-      db.collection("users")
-        .add({
-          email: currentUser?.email,
-          name: currentUser?.displayName,
-          photoURL: currentUser?.photoURL,
-          favorite: data.favorite,
-          twitterId: data.twitterId,
-          instagramId: data.instagramId,
-          lineId: data.lineId,
-          description: data.description,
-        })
-        .then(() => {
-          Router.push("/");
-        })
-        .catch(() => {
-          alert("登録に失敗しました");
-        });
+      if (currentUser?.email) {
+        db.collection("users")
+          .doc(currentUser?.email)
+          .set(userData)
+          .then(() => {
+            Router.push("/");
+          })
+          .catch(() => {
+            alert("登録に失敗しました");
+          });
+      }
   });
 
   return (
@@ -63,7 +68,6 @@ const AddUser: FC = () => {
               width={100}
               height={100}
               quality={90}
-              // layout={"responsive"}
               alt="profile_img"
             />
           )}
