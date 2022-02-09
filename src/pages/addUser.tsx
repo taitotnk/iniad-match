@@ -68,7 +68,6 @@ const AddUser: FC = () => {
               width={100}
               height={100}
               quality={90}
-              // layout={"responsive"}
               alt="profile_img"
             />
           )}
