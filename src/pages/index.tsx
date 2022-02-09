@@ -8,7 +8,6 @@ import { db } from "utils/Firebase";
 import { GetServerSideProps } from "next";
 import { elastic as Menu } from "react-burger-menu";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 export type UserData = {
   name: string;
@@ -26,13 +25,6 @@ type UserDataProps = {
 
 const Home = ({ userData }: UserDataProps) => {
   const { currentUser } = useAuth();
-  const router = useRouter();
-  // const clickUpdateLink = () => {
-  //   router.push({
-  //     pathname: "/profileUpdate",
-  //     query: { email: currentUser?.email },
-  //   });
-  // };
 
   //登録していないユーザーは登録ページに遷移
   if (currentUser) {
@@ -96,15 +88,20 @@ const Home = ({ userData }: UserDataProps) => {
           </>
         ))}
 
+        <Link href="/profileUpdate">
+          <a>
+            <button className="my-6 bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-4 rounded-full">
+              Edit profile
+            </button>
+          </a>
+        </Link>
+
         <button
           className="my-6 bg-red-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded-full"
           onClick={logout}
         >
           logout
         </button>
-        <Link href="/profileUpdate">
-          <a>UpdateProfile</a>
-        </Link>
       </Menu>
 
       <div className="container mx-auto">

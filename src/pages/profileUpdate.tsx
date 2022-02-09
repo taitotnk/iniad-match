@@ -21,7 +21,7 @@ type MyInfo = FormState & {
   name: string;
 };
 
-const profileUpdate = () => {
+const ProfileUpdate = () => {
   const { currentUser } = useAuth();
 
   // 現在のプロフィール情報を取得
@@ -174,12 +174,15 @@ const profileUpdate = () => {
                     ※Twitter IDは必須入力であり、15文字以内です。
                     <br />
                     また、無効な文字が入力されている可能性があります。
+                    <br />
+                    変更しない場合は、もう一度同じものを入力してください。
                   </span>
                 )}
               </div>
               <div className="mb-8">
                 <label className="text-white">
-                  Instagram ID（任意：入力なしでも可）
+                  Instagram
+                  ID（任意：入力なしでも可、変更しない場合は、もう一度同じものを入力してください。）
                 </label>
                 <input
                   type="text"
@@ -203,7 +206,7 @@ const profileUpdate = () => {
               </div>
               <div className="mb-8">
                 <label className="text-white">
-                  自己紹介（任意：20文字以内）
+                  自己紹介（任意：20文字以内、変更しない場合は、もう一度同じものを入力してください。）
                 </label>
                 <textarea
                   className="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-900"
@@ -226,4 +229,4 @@ const profileUpdate = () => {
   );
 };
 
-export default profileUpdate;
+export default ProfileUpdate;
