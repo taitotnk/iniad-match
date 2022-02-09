@@ -44,7 +44,6 @@ const profileUpdate = () => {
     });
   }, []);
 
-  console.log(myInfo);
   const {
     register,
     handleSubmit,
@@ -88,7 +87,7 @@ const profileUpdate = () => {
     <div className="container mx-auto">
       {currentUser && (
         <div>
-          <h1 className="text-white">プロフィール設定</h1>
+          <h1 className="text-white">プロフィールの編集</h1>
           <div>{myInfo?.description}</div>
           {currentUser.photoURL !== null && (
             <Image
@@ -97,7 +96,6 @@ const profileUpdate = () => {
               width={100}
               height={100}
               quality={90}
-              // layout={"responsive"}
               alt="profile_img"
             />
           )}
@@ -111,28 +109,64 @@ const profileUpdate = () => {
                   className="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50"
                   {...register("favorite", { required: true })}
                 >
-                  <option value="" disabled selected>
+                  <option value="" disabled>
                     選択してください
                   </option>
-                  <option value="Programing💻">プログラミング</option>
-                  <option value="SOCCER⚽">サッカー</option>
-                  <option value="Game🎮">ゲーム</option>
-                  <option value="Drawing🎨">絵描き</option>
-                  <option value="Anime📺">アニメ</option>
-                  <option value="Drinking🍺">お酒</option>
+                  {myInfo?.favorite === "Programing💻" ? (
+                    <option value="Programing💻" selected>
+                      プログラミング
+                    </option>
+                  ) : (
+                    <option value="Programing💻">プログラミング</option>
+                  )}
+                  {myInfo?.favorite === "SOCCER⚽" ? (
+                    <option value="SOCCER⚽" selected>
+                      サッカー
+                    </option>
+                  ) : (
+                    <option value="SOCCER⚽">サッカー</option>
+                  )}
+                  {myInfo?.favorite === "Game🎮" ? (
+                    <option value="Game🎮" selected>
+                      ゲーム
+                    </option>
+                  ) : (
+                    <option value="Game🎮">ゲーム</option>
+                  )}
+                  {myInfo?.favorite === "Drawing🎨" ? (
+                    <option value="Drawing🎨" selected>
+                      絵描き
+                    </option>
+                  ) : (
+                    <option value="Drawing🎨">絵描き</option>
+                  )}
+                  {myInfo?.favorite === "Anime📺" ? (
+                    <option value="Anime📺" selected>
+                      アニメ
+                    </option>
+                  ) : (
+                    <option value="Anime📺">アニメ</option>
+                  )}
+                  {myInfo?.favorite === "Drinking🍺" ? (
+                    <option value="Drinking🍺" selected>
+                      お酒
+                    </option>
+                  ) : (
+                    <option value="Drinking🍺">お酒</option>
+                  )}
                 </select>
               </div>
               <div>
                 <label className="text-white">Twitter ID（※必須）</label>
                 <input
                   type="text"
-                  placeholder="example_0000"
+                  placeholder={myInfo?.twitterId ? `${myInfo?.twitterId}` : ""}
                   {...register("twitterId", {
                     required: true,
                     maxLength: 15,
                     pattern: /^[a-zA-Z0-9_\-.]{3,15}$/i,
                   })}
-                  className="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50"
+                  className="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-900"
                 />
                 <br />
                 {errors.twitterId && (
@@ -149,8 +183,10 @@ const profileUpdate = () => {
                 </label>
                 <input
                   type="text"
-                  placeholder="example-0000"
-                  className="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50"
+                  placeholder={
+                    myInfo?.instagramId ? `${myInfo?.instagramId}` : ""
+                  }
+                  className="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-900"
                   {...register("instagramId", {
                     max: 15,
                     pattern: /^[a-zA-Z0-9_\-.]{3,15}$/i,
@@ -170,8 +206,10 @@ const profileUpdate = () => {
                   自己紹介（任意：20文字以内）
                 </label>
                 <textarea
-                  className="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50"
-                  placeholder="よろしくおねがいします！"
+                  className="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-900"
+                  placeholder={
+                    myInfo?.description ? `${myInfo?.description}` : ""
+                  }
                   {...register("description", { maxLength: 20 })}
                 ></textarea>
               </div>
@@ -186,25 +224,5 @@ const profileUpdate = () => {
     </div>
   );
 };
-
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//   const email = context.query.email?.toString();
-//   const userDataRaw = await db
-//     .collection("users")
-//     .doc(email)
-//     .get()
-//     .then((doc) => {
-//       let data = [];
-//       data.push(doc.data());
-//       return data;
-//     })
-//     .catch((error) => {
-//       console.log("Error getting documents: ", error);
-//     });
-//   const userData = JSON.parse(JSON.stringify(userDataRaw));
-//   return {
-//     props: { userData },
-//   };
-// };
 
 export default profileUpdate;
