@@ -21,11 +21,17 @@ const Layout = ({ children, title }: Props) => (
         content="https://iniad-match.vercel.app/iniad-match-ogp.jpg"
       />
       <meta
+        property="og:description"
+        content="Twitter IDやInstagram IDを設定することで、INIAD生の間でSNSでつながることができるWebアプリ"
+      />
+      <meta property="og:title" content={title} />
+      <meta
         property="twitter:image"
         content="https://iniad-match.vercel.app/iniad-match-ogp.jpg"
       />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@taito_1211" />
+      <meta name="twitter:title" content={title} />
     </Head>
     <header>
       <div className="container mx-auto">
