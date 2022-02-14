@@ -10,6 +10,10 @@ type Props = {
 const Layout = ({ children, title }: Props) => (
   <>
     <Head>
+      <link
+        rel="icon"
+        href="https://iniad-match.vercel.app/iniad-match-ogp.jpg"
+      />
       <title>{title}</title>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta
@@ -20,6 +24,8 @@ const Layout = ({ children, title }: Props) => (
         property="twitter:image"
         content="https://iniad-match.vercel.app/iniad-match-ogp.jpg"
       />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@taito_1211" />
     </Head>
     <header>
       <div className="container mx-auto">
