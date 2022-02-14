@@ -53,7 +53,7 @@ const Home = ({ userData }: UserDataProps) => {
   }, [currentUser]);
 
   return (
-    <Layout title="index">
+    <>
       <Menu width={240}>
         {userData.map((data) => (
           <>
@@ -103,59 +103,54 @@ const Home = ({ userData }: UserDataProps) => {
           logout
         </button>
       </Menu>
-
-      <div className="container mx-auto">
-        <Link href="/">
-          <a>
-            <h1 className="text-white pl-10">INIAD-MATCH 👋</h1>
-          </a>
-        </Link>
-
-        {userData.map((data) => (
-          <>
-            {data.email != currentUser?.email && (
-              <div className="container mx-auto md:w-3/5 my-8 bg-white rounded px-4 py-4 flex flex-col justify-between leading-normal shadow">
-                <div className="flex mt-3">
-                  <Image
-                    src={data.photoURL}
-                    width={60}
-                    height={60}
-                    alt="prof_img"
-                    className="h-10 w-10 rounded-full mr-2 object-cover"
-                  />
+      <Layout title="iniad-match">
+        <div className="container mx-auto">
+          {userData.map((data) => (
+            <>
+              {data.email != currentUser?.email && (
+                <div className="container mx-auto md:w-3/5 my-8 bg-white rounded px-4 py-4 flex flex-col justify-between leading-normal shadow">
+                  <div className="flex mt-3">
+                    <Image
+                      src={data.photoURL}
+                      width={60}
+                      height={60}
+                      alt="prof_img"
+                      className="h-10 w-10 rounded-full mr-2 object-cover"
+                    />
+                    <div>
+                      <p className="font-semibold text-gray-700 text-2xl capitalize">
+                        {" "}
+                        {data.name}{" "}
+                      </p>
+                    </div>
+                  </div>
                   <div>
-                    <p className="font-semibold text-gray-700 text-2xl capitalize">
-                      {" "}
-                      {data.name}{" "}
-                    </p>
-                  </div>
-                </div>
-                <div>
-                  <div className="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
-                    <h2>Like💖 {data.favorite}</h2>
-                  </div>
-                  <div className="mt-3 md:mt-0 text-gray-700 text-2xl mb-2">
-                    {data.description}
-                  </div>
-                  <a href={`https://twitter.com/${data.twitterId}`}>
-                    <button className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                      Twitter
-                    </button>
-                  </a>
-                  {data.instagramId !== "" && (
-                    <a href={`https://www.instagram.com/${data.instagramId}`}>
-                      <button className="py-2 px-4 rounded-full text-white font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-200 hover:from-pink-500 hover:to-orange-500">
-                        Instagram
+                    <div className="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
+                      <h2>Like💖 {data.favorite}</h2>
+                    </div>
+                    <div className="mt-3 md:mt-0 text-gray-700 text-2xl mb-2">
+                      {data.description}
+                    </div>
+                    <a href={`https://twitter.com/${data.twitterId}`}>
+                      <button className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                        Twitter
                       </button>
                     </a>
-                  )}
+                    {data.instagramId !== "" && (
+                      <a href={`https://www.instagram.com/${data.instagramId}`}>
+                        <button className="py-2 px-4 rounded-full text-white font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-200 hover:from-pink-500 hover:to-orange-500">
+                          Instagram
+                        </button>
+                      </a>
+                    )}
+                  </div>
                 </div>
-              </div>
-            )}
-          </>
-        ))}
-      </div>
-    </Layout>
+              )}
+            </>
+          ))}
+        </div>
+      </Layout>
+    </>
   );
 };
 
