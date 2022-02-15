@@ -43,10 +43,8 @@ const Layout = ({ children, title }: Props) => (
       </div>
     </header>
     <div>{children}</div>
-    <footer>
-      <div className="text-white text-center pl-10">
-        © 2021 Copyright INIAD-MATCH
-      </div>
+    <footer className="container mx-auto">
+      <div className="text-white  pl-10">© 2021 Copyright INIAD-MATCH</div>
     </footer>
   </>
 );
