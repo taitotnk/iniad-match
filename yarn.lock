@@ -516,10 +516,10 @@
   resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.3.tgz"
   integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
 
-"@types/react-burger-menu@2.8.1":
-  version "2.8.1"
-  resolved "https://registry.npmjs.org/@types/react-burger-menu/-/react-burger-menu-2.8.1.tgz"
-  integrity sha512-MLS6jRQi6H2At2en3KQhIhl7rBhBLcwGMviOT+BBthXv4c+HTg5gNziMUIxKzCzSWf5VyaXcyMWNvh+b+A+heA==
+"@types/react-burger-menu@2.8.3":
+  version "2.8.3"
+  resolved "https://registry.npmjs.org/@types/react-burger-menu/-/react-burger-menu-2.8.3.tgz"
+  integrity sha512-dXH/HzYSpcSxfstfBeBz5vzFLvaDbapExfh2QaPHPVX/IrgeGS6J25XTUTjnVtXpYoSKxFu6QFupO1J/RYbQlA==
   dependencies:
     "@types/react" "*"
 
