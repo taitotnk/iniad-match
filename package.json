@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@hookform/error-message": "2.0.0",
+    "@hookform/error-message": "2.0.1",
     "@types/react-burger-menu": "2.8.1",
     "autoprefixer": "10.2.6",
     "firebase": "8.7.1",
