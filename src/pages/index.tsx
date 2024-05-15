@@ -8,6 +8,7 @@ import { db } from "utils/Firebase";
 import { GetServerSideProps } from "next";
 import { elastic as Menu } from "react-burger-menu";
 import Link from "next/link";
+import FilterModal from "~/components/FilterModal";
 
 export type UserData = {
   name: string;
@@ -104,6 +105,9 @@ const Home = ({ userData }: UserDataProps) => {
         </button>
       </Menu>
       <Layout title="iniad-match">
+        <div className="text-center">
+          <FilterModal />
+        </div>
         <div className="container mx-auto">
           {userData.map((data) => (
             <>
